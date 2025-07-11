@@ -16,7 +16,8 @@
 │  ├─ styles.py
 │  ├─ internationalization.py
 │  ├─ multimedia.py
-│  └─ custom_widgets.py
+│  ├─ custom_widgets.py
+│  └─ file_dialogs.py
 └─ resources/
    └─ resources.qrc
 ```
@@ -44,9 +45,11 @@
   QTranslator を使った多言語対応例  
 - **features/multimedia.py**  
   QMediaPlayer／QAudioOutput／QVideoWidget による音声・動画再生例  
-- **features/custom_widgets.py**  
-  QPainter を使ったカスタムウィジェット作成例  
-- **resources/**  
+- **features/custom_widgets.py**
+  QPainter を使ったカスタムウィジェット作成例
+- **features/file_dialogs.py**
+  QFileDialog を使用したファイルの読み込み・保存の例
+- **resources/**
   QSS、アイコン、リソースファイル（.qrc）などを配置
 
 ## トラブルシューティング

@@ -8,16 +8,38 @@ except ImportError as e:
 
 import sys
 import config
-from features import basic_widgets, layouts, signals_slots
+import argparse
+from features import (
+    basic_widgets,
+    layouts,
+    signals_slots,
+    file_dialogs,
+)
 
-def main():
+FEATURE_MAP = {
+    "basic_widgets": basic_widgets.create_demo,
+    "layouts": layouts.create_demo,
+    "signals_slots": signals_slots.create_demo,
+    "file_dialogs": file_dialogs.create_demo,
+}
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="PySide6 feature demos")
+    parser.add_argument(
+        "--demo",
+        choices=FEATURE_MAP.keys(),
+        default="basic_widgets",
+        help="Select which demo widget to display",
+    )
+
+    args = parser.parse_args(argv)
+
     app = QApplication(sys.argv)
     window = QMainWindow()
     window.setWindowTitle(config.APP_NAME)
     window.resize(config.WINDOW_WIDTH, config.WINDOW_HEIGHT)
 
-    # 基本ウィジェットサンプルを中央に表示
-    demo_widget = basic_widgets.create_demo()
+    demo_widget = FEATURE_MAP[args.demo]()
     window.setCentralWidget(demo_widget)
 
     window.show()
